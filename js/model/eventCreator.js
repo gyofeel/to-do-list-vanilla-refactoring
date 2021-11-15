@@ -14,49 +14,56 @@ export default {
     addCard: () => ({
         type: CARD_ADDED
     }),
-    deleteCard: (id) => ({
+    deleteCard: (index) => ({
         type: CARD_DELETED,
-        payload: id
+        payload: index
     }),
-    updateCardTitle: (id, text) => ({
+    updateCardTitle: (index, text) => ({
         type: CARD_TITLE_UPDATED,
         payload: {
-            id,
+            index,
             text
         }
     }),
-    switchCardOrder: (id1, id2) => ({
+    switchCardOrder: (index1, index2) => ({
         type: CARD_ORDER_SWITCHED,
         payload: {
-            id1,
-            id2
+            index1,
+            index2
         }
     }),
-    addItem: () => ({
-        type: ITEM_ADDED
+    addItem: (index) => ({
+        type: ITEM_ADDED,
+        payload: index
     }),
-    deleteItem: (id) => ({
+    deleteItem: (cardIndex, itemIndex) => ({
         type: ITEM_DELETED,
-        payload: id
+        payload: {
+            cardIndex,
+            itemIndex
+        }
     }),
-    updateItem: (id, text) => ({
+    updateItem: (cardIndex, itemIndex, text) => ({
         type: ITEM_UPDATED,
         payload: {
-            id,
+            cardIndex,
+            itemIndex,
             text
         }
     }),
-    switchItemOrder: (id1, id2) => ({
+    switchItemOrder: (cardIndex, itemIndex1, itemndex2) => ({
         type: ITEM_ORDER_SWITCHED,
         payload: {
-            id1,
-            id2
+            cardIndex,
+            itemIndex1,
+            itemIndex2
         }
     }),
-    toggleItemCompleted: (id) => ({
+    toggleItemCompleted: (cardIndex, itemIndex) => ({
         type: ITEM_COMPLETED_TOGGLED,
         payload: {
-            id
+            cardIndex,
+            itemIndex
         }
     })
 }
