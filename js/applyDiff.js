@@ -1,6 +1,6 @@
-const different = (node1, node2) => {
+const differentValue = (node1, node2) => {
     return node1.value !== node2.value ||
-        node1.checked !== node2. checked;
+        node1.checked !== node2.checked;
 };
 
 const isNodeChanged = (node1, node2) => {
@@ -38,7 +38,7 @@ const isNodeChanged = (node1, node2) => {
     return false;
 };
 
-const applyAttribute = (
+const applyDiff = (
     parentNode,
     realNode,
     virtualNode
@@ -67,7 +67,7 @@ const applyAttribute = (
     const max = Math.max(realChildren.length, virtualChildren.length);
 
     for (let i = 0; i < max; i++) {
-        applydiff(
+        applyDiff(
             realNode,
             realChildren[i],
             virtualChildren[i]
