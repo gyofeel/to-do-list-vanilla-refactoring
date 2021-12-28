@@ -1,7 +1,7 @@
-const differentValue = (node1, node2) => {
-    return node1.value !== node2.value ||
-        node1.checked !== node2.checked;
-};
+// const differentValue = (node1, node2) => {
+//     return node1.value !== node2.value ||
+//         node1.checked !== node2.checked;
+// };
 
 const isNodeChanged = (node1, node2) => {
     const n1Attributes = node1.attributes;
@@ -25,9 +25,9 @@ const isNodeChanged = (node1, node2) => {
         return true;
     }
 
-    if (differentValue(node1, node2)) {
-        return true;
-    }
+    // if (differentValue(node1, node2)) {
+    //     return true;
+    // }
 
     if (node1.children.length === 0 &&
         node2.chidren.length === 0 &&
@@ -56,7 +56,7 @@ const applyDiff = (
     }
 
     if (isNodeChanged(virtualNode, realNode)) {
-        realNode.replaceWidth(virtualNode);
+        realNode.replaceWith(virtualNode);
 
         return;
     }
@@ -75,5 +75,6 @@ const applyDiff = (
     }
 };
 
+export default applyDiff;
 
 
