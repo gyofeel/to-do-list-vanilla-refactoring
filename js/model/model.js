@@ -1,10 +1,12 @@
+import { getFormattedDate } from '../utils.js';
+
 const cloneDeep = x => {
     return JSON.parse(JSON.stringify(x))
 };
 
 const INITIAL_STATE = {
-    userName: '',
-    date: '',
+    userName: 'gyofeel',
+    date: getFormattedDate(new Date()),
     cards: [],
 };
 
@@ -182,5 +184,33 @@ const toggleItemComplete = (state, event) => {
 
             return card;
         })
+    }
+};
+
+const methods = {
+    CARD_ADDED: addCard,
+    CARD_DELETED: deleteCard,
+    CARD_TITLE_UPDATED: updateCardTitle,
+    CARD_ORDER_SWITCHED: switchCardOrder,
+    ITEM_ADDED: addItem,
+    ITEM_DELETED: deleteItem,
+    ITEM_UPDATED: updateItem,
+    ITEM_ORDER_SWITCHED: switchItemOrder,
+    ITEM_COMPLETED_TOGGLED: toggleItemComplete
+};
+
+export default (initialState = INITIAL_STATE) => {
+    return (prevState, event) => {
+        if (!prevState) {
+            return cloneDeep(initialState);
+        }
+
+        const currentModifier = methods[event.type];
+        
+        if (!currentModifier) {
+            return prevState;
+        }
+
+        return currentModifier(prevState, event);
     }
 };
