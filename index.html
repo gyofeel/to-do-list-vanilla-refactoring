@@ -7,13 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-    <section class="app">
-        <header class="header"></header>
-        <section class="main"></section>
-        <footer class="footer"></footer>
-    </section>
+    <!-- Component Template -->
+    <!-- TODO - Template 파일 분리 -->
+    <!-- HeaderInfo -->
+    <template id="header-info">
+        <div id="inform">
+            <h3 class="logo">To Do List</h3>
+            <p class="date"></p>
+            <div class="user">
+                <p class="username"></p>
+            </div>
+        </div>
+    </template>
+    <!-- root -->
+    <div id="root">
+        <div data-component='headerInfo'></div>
+        <section id="content">
+        </section>
+    </div>
     <script type="module" src="js/index.js"></script>
 </body>
 
