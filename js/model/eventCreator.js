@@ -51,7 +51,7 @@ export default {
             text
         }
     }),
-    switchItemOrder: (cardIndex, itemIndex1, itemndex2) => ({
+    switchItemOrder: (cardIndex, itemIndex1, itemIndex2) => ({
         type: ITEM_ORDER_SWITCHED,
         payload: {
             cardIndex,
