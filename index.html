@@ -5,14 +5,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/base/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/layout/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/components/card.css">
+    <link rel="stylesheet" type="text/css" href="./css/components/headerInfo.css">
+    <link rel="stylesheet" type="text/css" href="./css/components/item.css">
     <title>Document</title>
 </head>
 <body>
     <!-- Component Template -->
     <!-- TODO - Template 파일 분리 -->
+    <!-- App -->
+    <template id="app">
+        <div class="app">
+            <section id="inform" data-component='header-info'></section>
+            <section id="content">
+                <div class="div-card" data-component="card-list"></div>
+            </section>
+        </div>
+    </template>
     <!-- HeaderInfo -->
     <template id="header-info">
-        <div id="inform">
+        <div class="header-info">
             <h3 class="logo">To Do List</h3>
             <p class="date"></p>
             <div class="user">
@@ -56,10 +70,7 @@
     </template>
     <!-- root -->
     <div id="root">
-        <div data-component='header-info'></div>
-        <section id="content">
-            <div class="div-card" data-component="card-list"></div>
-        </section>
+        <div data-component="app"></div>
     </div>
     <script type="module" src="js/index.js"></script>
 </body>
