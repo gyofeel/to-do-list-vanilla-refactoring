@@ -7,7 +7,24 @@ const cloneDeep = x => {
 const INITIAL_STATE = {
     userName: 'gyofeel',
     date: getFormattedDate(new Date()),
-    cards: [],
+    cards: [{
+        title: '테스트1',
+        list: [],
+        completeCount: 0,
+        totalCount: 0
+    },
+    {
+        title: '테스트2',
+        list: [],
+        completeCount: 0,
+        totalCount: 0
+    },
+    {
+        title: '테스트3',
+        list: [],
+        completeCount: 0,
+        totalCount: 0
+    }],
 };
 
 const addCard = (state) => {
@@ -31,7 +48,7 @@ const deleteCard = (state, event) => {
     
     return {
         ...state,
-        cards: state.cards.filter(card, i => i !== index)
+        cards: state.cards.filter((card, i) => i !== index)
     };
 };
 
@@ -44,8 +61,10 @@ const updateCardTitle = (state, event) => {
 
     return {
         ...state,
-        cards: state.cards.map(card => {
-            card.title = text
+        cards: state.cards.map((card, i) => {
+            if (i === index) {
+                card.title = text
+            }
 
             return card;
         })

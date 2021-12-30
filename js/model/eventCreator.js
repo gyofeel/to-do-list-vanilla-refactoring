@@ -12,39 +12,39 @@ const EVENT_TYPES = Object.freeze({
 
 export default {
     addCard: () => ({
-        type: CARD_ADDED
+        type: EVENT_TYPES.CARD_ADDED
     }),
     deleteCard: (index) => ({
-        type: CARD_DELETED,
+        type: EVENT_TYPES.CARD_DELETED,
         payload: index
     }),
     updateCardTitle: (index, text) => ({
-        type: CARD_TITLE_UPDATED,
+        type: EVENT_TYPES.CARD_TITLE_UPDATED,
         payload: {
             index,
             text
         }
     }),
     switchCardOrder: (index1, index2) => ({
-        type: CARD_ORDER_SWITCHED,
+        type: EVENT_TYPES.CARD_ORDER_SWITCHED,
         payload: {
             index1,
             index2
         }
     }),
     addItem: (index) => ({
-        type: ITEM_ADDED,
+        type: EVENT_TYPES.ITEM_ADDED,
         payload: index
     }),
     deleteItem: (cardIndex, itemIndex) => ({
-        type: ITEM_DELETED,
+        type: EVENT_TYPES.ITEM_DELETED,
         payload: {
             cardIndex,
             itemIndex
         }
     }),
     updateItem: (cardIndex, itemIndex, text) => ({
-        type: ITEM_UPDATED,
+        type: EVENT_TYPES.ITEM_UPDATED,
         payload: {
             cardIndex,
             itemIndex,
@@ -52,7 +52,7 @@ export default {
         }
     }),
     switchItemOrder: (cardIndex, itemIndex1, itemIndex2) => ({
-        type: ITEM_ORDER_SWITCHED,
+        type: EVENT_TYPES.ITEM_ORDER_SWITCHED,
         payload: {
             cardIndex,
             itemIndex1,
@@ -60,7 +60,7 @@ export default {
         }
     }),
     toggleItemCompleted: (cardIndex, itemIndex) => ({
-        type: ITEM_COMPLETED_TOGGLED,
+        type: EVENT_TYPES.ITEM_COMPLETED_TOGGLED,
         payload: {
             cardIndex,
             itemIndex

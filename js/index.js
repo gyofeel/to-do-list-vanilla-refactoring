@@ -1,13 +1,15 @@
-import HeaderInfo from './views/HeaderInfo.js'
+import HeaderInfo from './views/HeaderInfo.js';
+import CardList from './views/CardList.js';
 
-import applyDiff from './applyDiff.js'
+import applyDiff from './applyDiff.js';
 
 import registry from './registry.js';
 
 import eventBusFactory from './model/eventBus.js';
 import modelFactory from './model/model.js';
 
-registry.add('headerInfo', HeaderInfo);
+registry.add('header-info', HeaderInfo);
+registry.add('card-list', CardList);
 
 const model = modelFactory();
 const eventBus = eventBusFactory(model);

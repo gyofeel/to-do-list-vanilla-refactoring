@@ -20,10 +20,29 @@
             </div>
         </div>
     </template>
+    <!-- Card -->
+    <template id="card">
+        <div class="card">
+            <div class="card-title">
+                <input class="card-title-text">
+                <span class="card-delete">이 카드를 삭제</span>
+            </div>
+            <div class="list" data-component="item-list">
+            </div>
+            <div class="add-item"><span>+ Add Another item</span></div>
+            <div class="number-item">
+                <span class="complete-num"></span>
+                / 
+                <span class="total-num"></span>
+            </div>
+        </div>
+    </template>
+    <!-- Item -->
     <!-- root -->
     <div id="root">
-        <div data-component='headerInfo'></div>
+        <div data-component='header-info'></div>
         <section id="content">
+            <div class="div-card" data-component="card-list"></div>
         </section>
     </div>
     <script type="module" src="js/index.js"></script>
