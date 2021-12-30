@@ -17,7 +17,7 @@ const attachEventsToItemElement = (el, cardIndex, itemIndex, dispatch) => {
 
     el.querySelector('.item-delete').addEventListener('click', deleteHandler);
     el.querySelector('.item-content').addEventListener('blur', updateHandler);
-    el.querySelector('.checkbox').addEventListener('change', toggleCompleteHandler)
+    el.querySelector('.checkbox').addEventListener('change', toggleCompleteHandler);
 };
 
 const getItemElement = (data, cardIndex, itemIndex, dispatch) => {
@@ -26,8 +26,8 @@ const getItemElement = (data, cardIndex, itemIndex, dispatch) => {
 
     const elCheckBox = element.querySelector('.checkbox');
     elCheckBox.checked = complete;
-    elCheckBox.id = `${cardIndex}-${itemIndex}}`;
-    element.querySelector('.label').for = `${cardIndex}-${itemIndex}}`;
+    elCheckBox.id = `${cardIndex}-${itemIndex}`;
+    element.querySelector('.label').htmlFor = `${cardIndex}-${itemIndex}`;
     element.querySelector('.item-content').value = content;
     
     attachEventsToItemElement(element, cardIndex, itemIndex, dispatch);
@@ -42,7 +42,7 @@ export default (targetElement, state, dispatch) => {
     
     newItemList.innerHTML = '';
     
-    if (!cards.length || cardIndex < 0) {
+    if (!cards.length || cards.length - 1 < cardIndex || cardIndex < 0) {
         return newItemList;
     }
     

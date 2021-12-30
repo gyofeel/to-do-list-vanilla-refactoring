@@ -27,8 +27,8 @@ const INITIAL_STATE = {
                 complete: true
             }
         ],
-        completeCount: 0,
-        totalCount: 0
+        completeCount: 4,
+        totalCount: 4
     },
     {
         title: '테스트2',
@@ -50,8 +50,8 @@ const INITIAL_STATE = {
                 complete: true
             }
         ],
-        completeCount: 0,
-        totalCount: 0
+        completeCount: 4,
+        totalCount: 4
     },
     {
         title: '테스트3',
@@ -134,11 +134,14 @@ const addItem = (state, event) => {
         ...state,
         cards: state.cards.map((card, i) => {
             if (i === index) {
-                cards.list.push({
+                card.list.push({
                     content: '',
                     complete: false
                 });
+                card.totalCount++;
             }
+
+            return card;
         })
     };
 };
@@ -154,10 +157,14 @@ const deleteItem = (state, event) => {
         ...state,
         cards: state.cards.map((card, i) => {
             if (i === cardIndex) {
-                return {
+                let updatedCard = {
                     ...card,
-                    list: card.list.filter((item, i) => i !== itemIndex)
-                };
+                    list: card.list.filter((item, itemIdx) => itemIdx !== itemIndex),
+                    totalCount: card.totalCount -1
+                }
+                updatedCard.completeCount = updatedCard.list.filter((item) => item.complete).length
+                
+                return updatedCard;
             }
 
             return card;
@@ -222,16 +229,21 @@ const toggleItemComplete = (state, event) => {
         ...state,
         cards: state.cards.map((card, i) => {
             if (i === cardIndex) {
-                return {
+                let complete = false;
+                const updatedCard = {
                     ...card,
                     list: card.list.map((item, i) => {
                         if (i === itemIndex) {
-                            item.complete = !item.complete;
+                            complete = !item.complete;
+                            item.complete = complete;
                         }
 
                         return item;
                     })
                 };
+                updatedCard.completeCount = updatedCard.completeCount + (complete ? 1 : -1);
+                
+                return updatedCard;
             }
 
             return card;

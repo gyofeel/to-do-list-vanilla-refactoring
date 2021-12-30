@@ -20,8 +20,8 @@ const createNewButtonNode = () => {
 }
 
 const attachEventsToCardElement = (el, index, dispatch) => {
-    const addHandler = e => dispatch(eventCreator.addItem());
-    const deleteHandler = e => dispatch(eventCreator.deleteCard(parseInt(index, 10)));
+    const addHandler = e => dispatch(eventCreator.addItem(index));
+    const deleteHandler = e => dispatch(eventCreator.deleteCard(index));
     const updateTitleHandler = e => dispatch(eventCreator.updateCardTitle(index, e.target.value));
     // const switchHandler = e => dispatch(eventCreator.switchCardOrder());
 
@@ -68,7 +68,7 @@ export default (targetElement, state, dispatch) => {
         return newCardList;
     }
 
-    cards.map((card, index) => getCardElement(card, index, dispatch)).forEach(el => newCardList.appendChild(el));
+    cards.map((card, index) => getCardElement(card, parseInt(index, 10), dispatch)).forEach(el => newCardList.appendChild(el));
     newCardList.appendChild(getButtonElement(dispatch));
 
     return newCardList;
