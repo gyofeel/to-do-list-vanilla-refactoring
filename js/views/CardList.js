@@ -1,14 +1,23 @@
 import eventCreator from '../model/eventCreator.js';
 
-let template = null;
+let cardTemplate = null,
+    buttonTemplate = null
 
 const createNewCardNode = () => {
-    if (!template) {
-        template = document.getElementById('card');
+    if (!cardTemplate) {
+        cardTemplate = document.getElementById('card');
     }
 
-    return template.content.firstElementChild.cloneNode(true);
+    return cardTemplate.content.firstElementChild.cloneNode(true);
 };
+
+const createNewButtonNode = () => {
+    if (!buttonTemplate) {
+        buttonTemplate = document.getElementById('add-card-button');
+    }
+
+    return buttonTemplate.content.firstElementChild.cloneNode(true);
+}
 
 const attachEventsToCardElement = (el, index, dispatch) => {
     const addHandler = e => dispatch(eventCreator.addItem());
@@ -19,6 +28,12 @@ const attachEventsToCardElement = (el, index, dispatch) => {
     el.querySelector('.add-item').addEventListener('click', addHandler);
     el.querySelector('.card-delete').addEventListener('click', deleteHandler);
     el.querySelector('.card-title-text').addEventListener('blur', updateTitleHandler);
+};
+
+const attachEventsToButtonElement = (el, dispatch) => {
+    const addHandler = e => dispatch(eventCreator.addCard());
+
+    el.addEventListener('click', addHandler);
 };
 
 const getCardElement = (data, index, dispatch) => {
@@ -35,6 +50,13 @@ const getCardElement = (data, index, dispatch) => {
     return element;
 };
 
+const getButtonElement = (dispatch) => {
+    const element = createNewButtonNode();
+    attachEventsToButtonElement(element, dispatch);
+
+    return element;
+};
+
 export default (targetElement, state, dispatch) => {
     const { cards } = state;
     const newCardList = targetElement.cloneNode(true);
@@ -46,5 +68,6 @@ export default (targetElement, state, dispatch) => {
     }
 
     cards.map((card, index) => getCardElement(card, index, dispatch)).forEach(el => newCardList.appendChild(el));
+    newCardList.appendChild(getButtonElement(dispatch));
     return newCardList;
 };
