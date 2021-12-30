@@ -14,6 +14,11 @@
     z-index: 0;
 }
 
+.item:hover .item-delete {
+    /* display:block; */
+    opacity: 1;
+}
+
 .item.drag {
     position: fixed;
     z-index: 10;
@@ -89,11 +94,6 @@
     transition: 0.5s;
 }
 
-.item-delete.mouseover {
-    /* display:block; */
-    opacity: 1;
-}
-
 .guide-item {
     width: 100%;
     height: 50px;
@@ -102,7 +102,7 @@
 
 .add-item {
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 40px;
     background-color: black;
     margin-top: 10px;
