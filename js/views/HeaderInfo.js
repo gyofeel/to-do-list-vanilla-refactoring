@@ -1,6 +1,6 @@
 let template = null;
 
-const createNewHeaderInfo = () => {
+const createNewHeaderInfoNode = () => {
     if (!template) {
         template = document.getElementById('header-info');
     }
@@ -9,10 +9,9 @@ const createNewHeaderInfo = () => {
 };
 
 const getHeaderInfo = (userName, date) => {
-    const element = createNewHeaderInfo();
+    const element = createNewHeaderInfoNode();
     element.querySelector('.username').textContent = userName;
     element.querySelector('.date').textContent = date;
-    console.log('test: element - ', element);
     return element;
 };
 
