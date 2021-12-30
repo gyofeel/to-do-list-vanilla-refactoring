@@ -1,5 +1,6 @@
 import HeaderInfo from './views/HeaderInfo.js';
 import CardList from './views/CardList.js';
+import ItemList from './views/ItemList.js';
 
 import applyDiff from './applyDiff.js';
 
@@ -10,6 +11,7 @@ import modelFactory from './model/model.js';
 
 registry.add('header-info', HeaderInfo);
 registry.add('card-list', CardList);
+registry.add('item-list', ItemList);
 
 const model = modelFactory();
 const eventBus = eventBusFactory(model);

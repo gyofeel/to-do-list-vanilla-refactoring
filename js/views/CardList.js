@@ -44,6 +44,7 @@ const getCardElement = (data, index, dispatch) => {
     element.querySelector('.card-title-text').value = title;
     element.querySelector('.complete-num').textContent = completeCount;
     element.querySelector('.total-num').textContent = totalCount;
+    element.querySelector('.list').dataset.cardIndex = index;
 
     attachEventsToCardElement(element, index, dispatch);
 
@@ -69,5 +70,6 @@ export default (targetElement, state, dispatch) => {
 
     cards.map((card, index) => getCardElement(card, index, dispatch)).forEach(el => newCardList.appendChild(el));
     newCardList.appendChild(getButtonElement(dispatch));
+
     return newCardList;
 };

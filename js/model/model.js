@@ -9,13 +9,47 @@ const INITIAL_STATE = {
     date: getFormattedDate(new Date()),
     cards: [{
         title: '테스트1',
-        list: [],
+        list: [
+            {
+                content: '아이템 테스트 1',
+                complete: true
+            },
+            {
+                content: '아이템 테스트 2',
+                complete: true
+            },
+            {
+                content: '아이템 테스트 3',
+                complete: true
+            },
+            {
+                content: '아이템 테스트 4',
+                complete: true
+            }
+        ],
         completeCount: 0,
         totalCount: 0
     },
     {
         title: '테스트2',
-        list: [],
+        list: [
+            {
+                content: '아이템 테스트 1',
+                complete: true
+            },
+            {
+                content: '아이템 테스트 2',
+                complete: true
+            },
+            {
+                content: '아이템 테스트 3',
+                complete: true
+            },
+            {
+                content: '아이템 테스트 4',
+                complete: true
+            }
+        ],
         completeCount: 0,
         totalCount: 0
     },
@@ -132,8 +166,7 @@ const deleteItem = (state, event) => {
 };
 
 const updateItem = (state, event) => {
-    const { cardIndex, itemIndex, text } = event;
-
+    const { cardIndex, itemIndex, text } = event.payload;
     if (cardIndex < 0 || itemIndex < 0 || !text) {
         return state;
     }
@@ -160,7 +193,7 @@ const updateItem = (state, event) => {
 };
 
 const switchItemOrder = (state, event) => {
-    const { cardIndex, itemIndex1, itemIndex2 } = event;
+    const { cardIndex, itemIndex1, itemIndex2 } = event.payload;
     
     if (cardIndex < 0 || itemIndex1 < 0 || itemIndex2 < 0) {
         return state;
@@ -179,7 +212,7 @@ const switchItemOrder = (state, event) => {
 };
 
 const toggleItemComplete = (state, event) => {
-    const { cardIndex, itemIndex } = event;
+    const { cardIndex, itemIndex } = event.payload;
 
     if (cardIndex < 0 || itemIndex < 0) {
         return state;
