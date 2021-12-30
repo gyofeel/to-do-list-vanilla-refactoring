@@ -1,3 +1,4 @@
+import App from './views/App.js';
 import HeaderInfo from './views/HeaderInfo.js';
 import CardList from './views/CardList.js';
 import ItemList from './views/ItemList.js';
@@ -9,6 +10,7 @@ import registry from './registry.js';
 import eventBusFactory from './model/eventBus.js';
 import modelFactory from './model/model.js';
 
+registry.add('app', App);
 registry.add('header-info', HeaderInfo);
 registry.add('card-list', CardList);
 registry.add('item-list', ItemList);
